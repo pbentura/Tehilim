@@ -1,0 +1,18 @@
+#nameSearch {
+    direction: rtl;
+    text-align: right;
+}
+.hebrew {
+    direction: rtl;
+    text-align: center;
+}
+
+.tehilim {
+    font-family: "Times New Roman", Times, serif; /* Une police compatible avec l'hébreu */
+    font-size: 16px; /* Ajustez la taille de la police si nécessaire */
+    text-align: center;
+}
+.button:hover {
+    background-color: #4258ff;
+    color: #fff;
+}
