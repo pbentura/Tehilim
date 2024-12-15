@@ -16,3 +16,14 @@
     background-color: #4258ff;
     color: #fff;
 }
+
+#content-tehilim {
+    display: flex;
+    flex-direction: row-reverse; /* Cela inverse l'ordre des colonnes de droite à gauche */
+    flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne quand l'espace est insuffisant */
+}
+#nechama {
+    display: flex;
+    flex-direction: row-reverse; /* Cela inverse l'ordre des colonnes de droite à gauche */
+    flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne quand l'espace est insuffisant */
+}

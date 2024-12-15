@@ -5,11 +5,16 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+
 </head>
-<body>
+<body id="capture">
 <div style="margin-top: 80px;">
     <h1 class="title is-1 has-text-centered" id="title"></h1>
-</div><br><br>
+</div>
+<br>
 
 <div class="columns is-centered" id="saisie">
     <div class="column is-half">
@@ -26,6 +31,7 @@
                 </p>
                 <button class="button is-link" id="search">Afficher</button>
                 <button class="button is-link" id="print">Imprimer</button>
+                <button class="button is-link" id="export-pdf">Exporter PDF</button>
             </div>
             <div class="panel-block hebrew" id="clavier">
                 <div id="keyboard">
@@ -61,10 +67,61 @@
     </div>
 </div>
 
+
 <div class="container is-flex is-justify-content-center is-align-items-center fade-in">
-    <div id="content-tehilim" class="columns is-centered is-multiline is-flex-direction-rtl">
+    <div id="content-tehilim" class="columns is-centered is-multiline">
+
     </div>
 </div>
+<div class="container is-flex is-justify-content-center is-align-items-center fade-in">
+    <div class="columns is-centered is-multiline" id="nechama">
+        <div class="tehilim column is-one-third" data-letter="נ" style="display: block;">
+            <h1 class="hebrew">נ</h1>
+            <p class="tehilim">נֵר־לְרַגְלִ֥י דְבָרֶ֑ךָ וְ֝א֗וֹר לִנְתִיבָתִֽי׃</p>
+            <p class="tehilim">נִשְׁבַּ֥עְתִּי וָאֲקַיֵּ֑מָה לִ֝שְׁמֹ֗ר מִשְׁפְּטֵ֥י צִדְקֶֽךָ׃</p>
+            <p class="tehilim">נַעֲנֵ֥יתִי עַד־מְאֹ֑ד יְ֝הוָ֗ה חַיֵּ֥נִי כִדְבָרֶֽךָ׃</p>
+            <p class="tehilim">נִדְב֣וֹת פִּ֭י רְצֵה־נָ֣א יְהוָ֑ה וּֽמִשְׁפָּטֶ֥יךָ לַמְּדֵֽנִי׃</p>
+            <p class="tehilim">נַפְשִׁ֣י בְכַפִּ֣י תָמִ֑יד וְ֝תֽוֹרָתְךָ֗ לֹ֣א שָׁכָֽחְתִּי׃</p>
+            <p class="tehilim">נָתְנ֬וּ רְשָׁעִ֣ים פַּ֣ח לִ֑י וּ֝מִפִּקּוּדֶ֗יךָ לֹ֣א תָעִֽיתִי׃</p>
+            <p class="tehilim">נָחַ֣לְתִּי עֵדְוֺתֶ֣יךָ לְעוֹלָ֑ם כִּֽי־שְׂשׂ֖וֹן לִבִּ֣י הֵֽמָּה׃</p>
+            <p class="tehilim">נָטִ֣יתִי לִ֭בִּי לַעֲשׂ֥וֹת חֻקֶּ֗יךָ לְעוֹלָ֥ם עֵֽקֶב׃</p>
+        </div>
+        <div class="tehilim column is-one-third" data-letter="ש" style="display: block;">
+            <h1 class="hebrew">ש</h1>
+            <p class="tehilim">שָׂ֭רִים רְדָפ֣וּנִי חִנָּ֑ם ומדבריך [וּ֝מִדְּבָרְךָ֗] פָּחַ֥ד לִבִּֽי׃</p>
+            <p class="tehilim">שָׂ֣שׂ אָ֭נֹכִֽי עַל־אִמְרָתֶ֑ךָ כְּ֝מוֹצֵ֗א שָׁלָ֥ל רָֽב׃</p>
+            <p class="tehilim">שֶׁ֣קֶר שָׂ֭נֵאתִי וַאֲתַעֵ֑בָה תּוֹרָתְךָ֥ אָהָֽבְתִּי׃</p>
+            <p class="tehilim">שֶׁ֣בַע בַּ֭יּוֹם הִלַּלְתִּ֑יךָ עַ֝֗ל מִשְׁפְּטֵ֥י צִדְקֶֽךָ׃</p>
+            <p class="tehilim">שָׁל֣וֹם רָ֭ב לְאֹהֲבֵ֣י תוֹרָתֶ֑ךָ וְאֵֽין־לָ֥מוֹ מִכְשֽׁוֹל׃</p>
+            <p class="tehilim">שִׂבַּ֣רְתִּי לִֽישׁוּעָתְךָ֣ יְהוָ֑ה וּֽמִצְוֺתֶ֥יךָ עָשִֽׂיתִי׃</p>
+            <p class="tehilim">שָֽׁמְרָ֣ה נַ֭פְשִׁי עֵדֹתֶ֑יךָ וָאֹהֲבֵ֥ם מְאֹֽד׃</p>
+            <p class="tehilim">שָׁמַ֣רְתִּי פִ֭קּוּדֶיךָ וְעֵדֹתֶ֑יךָ כִּ֖י כָל־דְּרָכַ֣י נֶגְדֶּֽךָ׃</p>
+        </div>
+        <div class="tehilim column is-one-third" data-letter="מ" style="display: block;">
+            <h1 class="hebrew">מ</h1>
+            <p class="tehilim">מָֽה־אָהַ֥בְתִּי תוֹרָתֶ֑ךָ כָּל־הַ֝יּ֗וֹם הִ֣יא שִׂיחָתִֽי׃</p>
+            <p class="tehilim">מֵ֭אֹ֣יְבַי תְּחַכְּמֵ֣נִי מִצְוֺתֶ֑ךָ כִּ֖י לְעוֹלָ֣ם הִיא־לִֽי׃</p>
+            <p class="tehilim">מִכָּל־מְלַמְּדַ֥י הִשְׂכַּ֑לְתִּי כִּ֥י עֵ֝דְוֺתֶ֗יךָ שִׂ֣יחָה לִֽֿי׃</p>
+            <p class="tehilim">מִזְּקֵנִ֥ים אֶתְבּוֹנָ֑ן כִּ֖י פִקּוּדֶ֣יךָ נָצָֽרְתִּי׃</p>
+            <p class="tehilim">מִכָּל־אֹ֣רַח רָ֭ע כָּלִ֣אתִי רַגְלָ֑י לְ֝מַ֗עַן אֶשְׁמֹ֥ר דְּבָרֶֽךָ׃</p>
+            <p class="tehilim">מִמִּשְׁפָּטֶ֥יךָ לֹא־סָ֑רְתִּי כִּֽי־אַ֝תָּ֗ה הוֹרֵתָֽנִי׃</p>
+            <p class="tehilim">מַה־נִּמְלְצ֣וּ לְ֭חִכִּי אִמְרָתֶ֗ךָ מִדְּבַ֥שׁ לְפִֽי׃</p>
+            <p class="tehilim">מִפִּקּוּדֶ֥יךָ אֶתְבּוֹנָ֑ן עַל־כֵּ֝֗ן שָׂנֵ֤אתִי ׀ כָּל־אֹ֬רַח שָֽׁקֶר׃</p>
+        </div>
+        <div class="tehilim column is-one-third" data-letter="ה" style="display: block;">
+            <h1 class="hebrew">ה</h1>
+            <p class="tehilim">הוֹרֵ֣נִי יְ֭הוָה דֶּ֥רֶךְ חֻקֶּ֗יךָ וְאֶצְּרֶ֥נָּה עֵֽקֶב׃</p>
+            <p class="tehilim">הֲ֭בִינֵנִי וְאֶצְּרָ֥ה תֽוֹרָתֶ֗ךָ וְאֶשְׁמְרֶ֥נָּה בְכָל־לֵֽב׃</p>
+            <p class="tehilim">הַ֭דְרִיכֵנִי בִּנְתִ֣יב מִצְוֺתֶ֑יךָ כִּי־ב֥וֹ חָפָֽצְתִּי׃</p>
+            <p class="tehilim">הַט־לִ֭בִּי אֶל־עֵדְוֺתֶ֗יךָ וְאַ֣ל אֶל־בָּֽצַע׃</p>
+            <p class="tehilim">הַעֲבֵ֣ר עֵ֭ינַי מֵרְא֣וֹת שָׁ֑וְא בִּדְרָכֶ֥ךָ חַיֵּֽנִי׃</p>
+            <p class="tehilim">הָקֵ֣ם לְ֭עַבְדְּךָ אִמְרָתֶ֑ךָ אֲ֝שֶׁ֗ר לְיִרְאָתֶֽךָ׃</p>
+            <p class="tehilim">הַעֲבֵ֣ר חֶ֭רְפָּתִי אֲשֶׁ֣ר יָגֹ֑רְתִּי כִּ֖י מִשְׁפָּטֶ֣יךָ טוֹבִֽים׃</p>
+            <p class="tehilim">הִ֭נֵּה תָּאַ֣בְתִּי לְפִקֻּדֶ֑יךָ בְּצִדְקָתְךָ֥ חַיֵּֽנִי׃</p>
+        </div>
+    </div>
+</div>
+
 
 <div id="content-tehilim-pdf" style="display: none;">
     <div class="tehilim" data-letter="א">
@@ -310,34 +367,14 @@
         <p class="tehilim">תָּעִ֗יתִי כְּשֶׂ֣ה אֹ֭בֵד בַּקֵּ֣שׁ עַבְדֶּ֑ךָ כִּ֥י מִ֝צְוֺתֶ֗יךָ לֹ֣א שָׁכָֽחְתִּי׃</p>
     </div>
 </div>
-<!--<button class="js-modal-trigger" data-target="modal-js-example">-->
-<!--    Open JS example modal-->
-<!--</button>-->
-<!--<div class="modal" id="modal-js-example">-->
-<!--    <div class="modal-background"></div>-->
-<!--    <div class="modal-card">-->
-<!--        <header class="modal-card-head">-->
-<!--            <p class="modal-card-title">Tehilim</p>-->
-<!--            <button class="delete" aria-label="close"></button>-->
-<!--        </header>-->
-<!--        <section class="modal-card-body" id="modal-tehilim">-->
-
-<!--        </section>-->
-<!--        <footer class="modal-card-foot">-->
-<!--            <div class="buttons">-->
-<!--                <button class="button is-link" id="printTehilim">Imprimer</button>-->
-<!--            </div>-->
-<!--        </footer>-->
-<!--    </div>-->
-<!--</div>-->
 
 <script src="index.js"></script>
+
 <script>
     function addCharacter(character) {
         document.getElementById("nameSearch").value += character;
     }
 </script>
-<script src="modal.js"></script>
 </body>
 </html>
 
