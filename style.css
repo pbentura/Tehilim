@@ -2,16 +2,25 @@
     direction: rtl;
     text-align: right;
 }
+input {
+    font-family: "Times New Roman", Times, serif;
+}
 .hebrew {
+    font-family: "Times New Roman", Times, serif;
     direction: rtl;
     text-align: center;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .tehilim {
-    font-family: "Times New Roman", Times, serif; /* Une police compatible avec l'hébreu */
-    font-size: 16px; /* Ajustez la taille de la police si nécessaire */
+    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
     text-align: center;
+    margin-bottom: 30px;
+
 }
+
 .button:hover {
     background-color: #4258ff;
     color: #fff;
@@ -23,7 +32,8 @@
     flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne quand l'espace est insuffisant */
 }
 #nechama {
-    display: flex;
+    /*display: flex;*/
     flex-direction: row-reverse; /* Cela inverse l'ordre des colonnes de droite à gauche */
     flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne quand l'espace est insuffisant */
 }
+

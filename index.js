@@ -26,7 +26,7 @@ function showTehilimBYName(name) {
         if (matchingDiv) {
             matchingDiv.style.display = "block";
             const cloneDiv = matchingDiv.cloneNode(true);
-            cloneDiv.classList.add('column', 'is-one-third');
+            // cloneDiv.classList.add('column');
             contentTehilim.appendChild(cloneDiv);
         }
 
