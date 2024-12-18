@@ -18,6 +18,10 @@ input {
     font-size: 18px;
     text-align: center;
     margin-bottom: 30px;
+    line-height: 1.8; /* Améliore la lisibilité */
+    margin-left: auto; /* Centre le texte */
+    margin-right: auto; /* Centre le texte */
+    padding: 0 15px;
 
 }
 
@@ -28,12 +32,18 @@ input {
 
 #content-tehilim {
     display: flex;
-    flex-direction: row-reverse; /* Cela inverse l'ordre des colonnes de droite à gauche */
-    flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne quand l'espace est insuffisant */
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
 }
 #nechama {
-    /*display: flex;*/
-    flex-direction: row-reverse; /* Cela inverse l'ordre des colonnes de droite à gauche */
-    flex-wrap: wrap; /* Cela permet aux éléments de passer à la ligne quand l'espace est insuffisant */
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
 }
 
+@media (max-width: 480px) {
+    .tehilim {
+        font-size: 14px; /* Réduit encore plus la taille de la police */
+        max-width: 95%; /* Le texte prend jusqu'à 95% de la largeur de l'écran */
+        
+    }
+}

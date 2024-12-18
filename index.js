@@ -41,17 +41,11 @@ function showTehilimBYName(name) {
         if (matchingDiv) {
             matchingDiv.style.display = "block";
             const cloneDiv = matchingDiv.cloneNode(true);
-            // cloneDiv.classList.add('column');
             contentTehilim.appendChild(cloneDiv);
-        }
-
-        formattedLetters += letter;
-        if (index < array.length - 1) {
-            formattedLetters += "-";
         }
     });
 
-    lettres.innerHTML = `<p style="color: #4258ff">אותיות: ${formattedLetters}</p>`;
+    lettres.innerHTML = `<p style="color: #4258ff">אותיות: ${cleanedName.split("").join("-")}</p>`;
 }
 
 document.getElementById("print").addEventListener("click", function () {

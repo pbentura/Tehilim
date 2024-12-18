@@ -29,10 +29,11 @@
                 <p class="control">
                     <input id="nameSearch" class="input is-link" autofocus type="text"/>
                 </p>
-                
-                <button class="button is-link" id="search"><i class="fa-solid fa-book"></i></button>
-                <button class="button is-link" id="print"><i class="fa-solid fa-print"></i></button>
-                <button class="button is-link" id="export-pdf"><i class="fa-solid fa-file-export"></i></button>
+                <button class="button is-link is-medium is-outlined is-rounded" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="panel-block is-justify-content-center">
+                <button class="button is-link is-medium is-outlined is-rounded" id="print"><i class="fa-solid fa-print"></i></button>
+                <button class="button is-link is-medium is-outlined is-rounded" id="export-pdf"><i class="fa-solid fa-file-pdf"></i></button>
             </div>
             <div class="panel-block hebrew" id="clavier">
                 <div id="keyboard">
@@ -63,7 +64,13 @@
                     <button class="button is-link is-rounded is-outlined" onclick="addCharacter('ר')">ר</button>
                     <button class="button is-link is-rounded is-outlined" onclick="addCharacter('ש')">ש</button>
                     <button class="button is-link is-rounded is-outlined" onclick="addCharacter('ת')">ת</button>
-                    <button class="button is-link is-rounded is-outlined" onclick="addCharacter(' ')">Espace</button>
+                    <div>
+                        <button class="button is-link is-rounded is-outlined" onclick="addCharacter(' ')">Espace</button><br>
+                    </div>
+                    <div>
+                        <button class="button is-link is-rounded is-outlined" onclick="removeCharacter()"><i class="fa-solid fa-delete-left fa-flip-horizontal"></i></button>
+                        <button class="button is-link is-rounded is-outlined" onclick="removeAll()"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>
                 </div>
             </div>
             <div class="panel-block hebrew" id="lettre">
@@ -405,6 +412,12 @@
 <script>
     function addCharacter(character) {
         document.getElementById("nameSearch").value += character;
+    }
+    function removeCharacter() {
+        document.getElementById("nameSearch").value = document.getElementById("nameSearch").value.slice(0, -1);
+    }
+    function removeAll() {
+        document.getElementById("nameSearch").value = "";
     }
 </script>
 </body>
