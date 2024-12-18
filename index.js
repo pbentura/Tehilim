@@ -20,6 +20,21 @@ function showTehilimBYName(name) {
     const cleanedName = name.replace(/\s+/g, "");
 
     cleanedName.split("").forEach((letter, index, array) => {
+        if (letter === "ך") {
+            letter = "כ";
+        }
+        if (letter === "ם") {
+            letter = "מ";
+        }
+        if (letter === "ן") {
+            letter = "נ";
+        }
+        if (letter === "ף") {
+            letter = "פ";
+        }
+        if (letter === "ץ") {
+            letter = "צ";
+        }
         const matchingDiv = tehilimArray.find(div => div.dataset.letter === letter);
         console.log(matchingDiv ? matchingDiv.textContent : `Lettre non trouvée: ${letter}`);
 
@@ -45,7 +60,7 @@ document.getElementById("print").addEventListener("click", function () {
     window.print();
 });
 document.getElementById("export-pdf").addEventListener("click", function () {
-    const { jsPDF } = window.jspdf;
+    const {jsPDF} = window.jspdf;
     document.getElementById('saisie').style.display = "none";
     document.getElementById('title').textContent = "לעילוי נשמת " + name.value;
 
@@ -53,7 +68,7 @@ document.getElementById("export-pdf").addEventListener("click", function () {
     const element = document.getElementById("capture");
 
     // Utiliser html2canvas pour capturer l'élément
-    html2canvas(element, { scale: 2 }).then(canvas => {
+    html2canvas(element, {scale: 2}).then(canvas => {
         // Convertir le canvas en image (Base64)
         const imgData = canvas.toDataURL("image/png");
 
