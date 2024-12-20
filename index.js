@@ -52,32 +52,42 @@ document.getElementById("print").addEventListener("click", function () {
     document.getElementById('saisie').style.display = "none";
     document.getElementById('title').textContent = "לעילוי נשמת " + name.value;
     window.print();
+    document.getElementById('back').classList.remove('is-hidden');
 });
+
 document.getElementById("export-pdf").addEventListener("click", function () {
     const {jsPDF} = window.jspdf;
     document.getElementById('saisie').style.display = "none";
     document.getElementById('title').textContent = "לעילוי נשמת " + name.value;
 
-    // Sélectionner l'élément à capturer
     const element = document.getElementById("capture");
 
-    // Utiliser html2canvas pour capturer l'élément
     html2canvas(element, {scale: 2}).then(canvas => {
-        // Convertir le canvas en image (Base64)
         const imgData = canvas.toDataURL("image/png");
 
-        // Créer un fichier PDF avec jsPDF
         const pdf = new jsPDF("p", "mm", "a4"); // Portrait, millimètres, format A4
 
-        // Calculer la largeur et hauteur pour remplir la page
         const pdfWidth = pdf.internal.pageSize.getWidth();
         const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
 
-        // Ajouter l'image capturée dans le PDF
         pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-        // Télécharger le fichier PDF
         pdf.save("tehilim.pdf");
     });
 });
 
+function dropPanel() {
+    const acc = document.getElementById('acc');
+    const panel = document.getElementById('panelSai');
+
+    acc.addEventListener("click", function () {
+        this.classList.toggle("active");
+        if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+        } else {
+            panel.style.maxHeight = panel.scrollHeight + 50 + "px";
+        }
+    });
+}
+
+dropPanel();
